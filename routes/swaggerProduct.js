@@ -165,3 +165,40 @@
  *       500:
  *         description: Internal server error.
  */
+
+/**
+ * @swagger
+ * /api/v1/products/q/{term}:
+ *   get:
+ *     summary: Search Products by term
+ *     tags: [Products]
+ *     description: Returns a list of products matching the search term.
+ *     parameters:
+ *       - in: path
+ *         name: term
+ *         description: The term to search for in product names and descriptions.
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: List of products matching the search term.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Product'
+ *       404:
+ *         description: Product not found.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Error message indicating product not found.
+ *       500:
+ *         description: Internal server error.
+ */
