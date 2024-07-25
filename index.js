@@ -4,7 +4,6 @@ const { swaggerSpecs, swaggerUI } = require('./swagger')
 
 const apiRouter = require('./routes/api');
 const apiv2Router = require('./routes/apiv2');
-const apivProductRouter = require('./routes/apiProduct'); //product
 
 const https = require('https');
 const fs = require('fs');
@@ -16,7 +15,6 @@ app.use(express.json());
 app.use(cors());
 app.use('/api/v1', apiRouter);
 app.use('/api/v2', apiv2Router);
-app.use('/api/vproducts', apivProductRouter); //product
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpecs));
 
 const ssl_options = {
