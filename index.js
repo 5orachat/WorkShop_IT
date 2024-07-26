@@ -2,8 +2,12 @@ const express = require('express');
 const cors = require('cors');
 const { swaggerSpecs, swaggerUI } = require('./swagger')
 
+//for cookie
+const cookieParser = require("cookie-parser");
+
 const apiRouter = require('./routes/api');
 const apiv2Router = require('./routes/apiv2');
+
 
 const https = require('https');
 const fs = require('fs');
@@ -12,7 +16,11 @@ const app = express();
 // express version 4.16.0+ has built-in JSON parsing capabilities
 // using below statement for json body parser
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: true,
+    credentials: true,}
+));
+app.use(cookieParser());
 app.use('/api/v1', apiRouter);
 app.use('/api/v2', apiv2Router);
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpecs));
