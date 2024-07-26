@@ -22,7 +22,7 @@ const createCustomer = async (req, res) => {
 };
 // update one customer
 const updateCustomer =  async (req, res) => {
-    const { id, first_name, last_name, address, email, phone_number } = req.body;
+    const { customer_id, first_name, last_name, address, email, phone_number } = req.body;
     try {
         const cust = await prisma.customers.update({
             data: {
@@ -32,7 +32,7 @@ const updateCustomer =  async (req, res) => {
                 email,
                 phone_number
             },
-            where: { customer_id: Number(id) }
+            where: { customer_id: Number(customer_id) }
         });
         res.status(200).json(cust);
     } catch (err) {

@@ -22,7 +22,7 @@ const createProduct = async (req, res) => {
 };
 // update one product
 const updateProduct =  async (req, res) => {
-    const { id, name, description, price, category, image_url } = req.body;
+    const { product_id, name, description, price, category, image_url } = req.body;
     try {
         const cust = await prisma.products.update({
             data: {
@@ -32,7 +32,7 @@ const updateProduct =  async (req, res) => {
                 category,
                 image_url
             },
-            where: { product_id: Number(id) }
+            where: { product_id: Number(product_id) }
         });
         res.status(200).json(cust);
     } catch (err) {
