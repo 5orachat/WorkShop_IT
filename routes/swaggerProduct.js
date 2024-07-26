@@ -112,18 +112,11 @@
 
 /**
  * @swagger
- * /api/v1/products/{product_id}:
+ * /api/v1/products:
  *   put:
- *     summary: Update Product by ID
+ *     summary: Update an existing Product
  *     tags: [Products]
- *     description: Update an existing product in the database by ID.
- *     parameters:
- *       - name: product_id
- *         in: path
- *         required: true
- *         description: ID of the product to update.
- *         schema:
- *           type: integer
+ *     description: Update a product's details in the database based on the provided product_id.
  *     requestBody:
  *       required: true
  *       content:
@@ -132,16 +125,25 @@
  *             $ref: '#/components/schemas/Product'
  *     responses:
  *       200:
- *         description: Product updated successfully.
+ *         description: Product object updated.
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Product'
  *       404:
  *         description: Product not found.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Error message indicating product not found.
  *       500:
  *         description: Internal server error.
  */
+
 
 /**
  * @swagger

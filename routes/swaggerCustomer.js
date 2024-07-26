@@ -110,18 +110,11 @@
 
 /**
  * @swagger
- * /api/v1/customers/{customer_id}:
+ * /api/v1/customers:
  *   put:
- *     summary: Update Customer by ID
+ *     summary: Update an existing Customer
  *     tags: [Customers]
- *     description: Update an existing customer in the database by ID.
- *     parameters:
- *       - name: customer_id
- *         in: path
- *         required: true
- *         description: ID of the customer to update.
- *         schema:
- *           type: integer
+ *     description: Update a customer's details in the database based on the provided customer_id.
  *     requestBody:
  *       required: true
  *       content:
@@ -130,16 +123,23 @@
  *             $ref: '#/components/schemas/Customer'
  *     responses:
  *       200:
- *         description: Customer updated successfully.
+ *         description: Customer object updated.
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Customer'
  *       404:
  *         description: Customer not found.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Error message indicating customer not found.
  *       500:
  *         description: Internal server error.
- *   
  */
 
 /**
